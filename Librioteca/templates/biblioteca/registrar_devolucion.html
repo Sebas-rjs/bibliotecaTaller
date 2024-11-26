@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Devolución</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-success">Registrar Devolución</h1>
+        <p class="text-center">
+            ¿Estás seguro de que deseas registrar la devolución del libro 
+            "<strong>{{ prestamo.libro.titulo }}</strong>" prestado por 
+            <strong>{{ prestamo.usuario.first_name }} {{ prestamo.usuario.last_name }}</strong>?
+        </p>
+        <form method="POST" class="text-center">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Devolver</button>
+            <a href="{% url 'lista_libros' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

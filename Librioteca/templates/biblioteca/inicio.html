@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librioteca</title>
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Librioteca</h2>
+        <nav>
+            <a href="{% url 'inicio' %}" class="sidebar-link">Inicio</a>
+            <a href="{% url 'lista_libros' %}" class="sidebar-link">Lista de Libros</a>
+            <a href="{% url 'agregar_libro' %}" class="sidebar-link">Agregar Libro</a>
+            <a href="{% url 'registrar_prestamo' %}" class="sidebar-link">Registrar Préstamo</a>
+            <a href="{% url 'lista_usuarios' %}" class="sidebar-link">Lista de Usuarios</a>
+            <a href="{% url 'agregar_usuario' %}" class="sidebar-link">Agregar Usuario</a>
+        </nav>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <header>
+            <h1>Bienvenido a Librioteca</h1>
+            <p>Utiliza el menú de la izquierda para navegar entre las distintas opciones del sistema.</p>
+        </header>
+
+        <main>
+            <h3>Préstamos Activos</h3>
+            <ul class="list-group">
+                {% for prestamo in prestamos %}
+                    {% if prestamo.id %}
+                        <li class="list-group-item">
+                            <a href="{% url 'registrar_devolucion' prestamo_id=prestamo.id %}">
+                                Devolución de {{ prestamo.libro }}
+                            </a>
+                        </li>
+                    {% else %}
+                        <li class="list-group-item error">No se puede procesar este préstamo debido a un error en el ID.</li>
+                    {% endif %}
+                {% empty %}
+                    <p class="no-prestamos">No hay préstamos activos en este momento.</p>
+                {% endfor %}
+            </ul>
+        </main>
+    </div>
+</body>
+</html>

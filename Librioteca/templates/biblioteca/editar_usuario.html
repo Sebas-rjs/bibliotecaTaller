@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Producto | Sistema de Gestión</title>
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Sistema de Gestión</h2>
+        <nav>
+            <a href="{% url 'inicio' %}" class="sidebar-link">Inicio</a>
+            <a href="{% url 'lista_productos' %}" class="sidebar-link">Lista de Productos</a>
+            <a href="{% url 'agregar_producto' %}" class="sidebar-link">Agregar Producto</a>
+            <a href="{% url 'registrar_venta' %}" class="sidebar-link">Registrar Venta</a>
+            <a href="{% url 'lista_clientes' %}" class="sidebar-link">Lista de Clientes</a>
+            <a href="{% url 'agregar_cliente' %}" class="sidebar-link">Agregar Cliente</a>
+        </nav>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <header>
+            <h1>Editar Producto</h1>
+        </header>
+
+        <main>
+            <form method="POST" class="form-edit-product">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.as_p }}
+                </div>
+                <button type="submit" class="btn-edit">Actualizar</button>
+                <a href="{% url 'lista_productos' %}" class="btn-back">Cancelar</a>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

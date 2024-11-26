@@ -1,0 +1,571 @@
+/* General */
+body {
+    font-family: 'Georgia', serif; /* Tipografía clásica */
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    background-image: url("{% static 'assets/img/libreria.jpg' %}"); /* Imagen de fondo temática */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    height: 100vh;
+    justify-content: flex-start; /* Alineamos todo desde el principio */
+}
+
+/* Sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #4e2a2a; /* Rojo burdeos */
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+    position: fixed; /* Fija la barra lateral */
+    top: 0;
+    bottom: 0;
+    left: 0; /* Asegura que comience en el borde izquierdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    z-index: 1000; /* Mantiene la barra sobre otros elementos */
+}
+
+.sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #d9b89c; /* Tono café claro */
+    border-bottom: 2px solid #8b4513; /* Café oscuro */
+    padding-bottom: 10px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Aumentamos el espacio entre los enlaces */
+}
+
+.sidebar-link {
+    text-decoration: none;
+    color: #f8f4f1; /* Blanco suave */
+    padding: 12px 20px; /* Aumentamos un poco el padding para que no se vea tan apretado */
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sidebar-link:hover {
+    background-color: #8b4513; /* Café oscuro */
+    transform: translateX(5px);
+}
+
+/* Main Content */
+.container {
+    width: calc(100% - 250px); /* El contenedor ocupará el espacio restante, considerando el ancho del sidebar */
+    max-width: 1000px; /* Máximo ancho de 1000px */
+    margin: 40px auto 20px; /* Centrado con márgenes superior e inferior */
+    padding: 40px;
+    background-color: rgba(0, 0, 0, 0.8); /* Fondo negro translúcido */
+    border-radius: 12px; /* Esquinas redondeadas */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Sombra suave */
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-left: 380px; /* Ajustamos el margen izquierdo a 250px para que quede más cerca del sidebar */
+}
+/* Header */
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 20px; /* Espacio mayor entre título y párrafo */
+    color: #d9b89c; /* Café claro */
+}
+
+header p {
+    font-size: 1.1rem; /* Aumentamos un poco el tamaño para mayor claridad */
+    margin-bottom: 20px; /* Añadimos espacio inferior */
+    color: #f0e6dc; /* Blanco apagado */
+}
+
+/* Prestamos */
+.list-group {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-group-item {
+    background-color: rgba(255, 235, 205, 0.2); /* Café claro translúcido */
+    border: 1px solid rgba(139, 69, 19, 0.5); /* Café oscuro translúcido */
+    border-radius: 5px;
+    padding: 20px; /* Aumentamos el padding para un espaciado más cómodo */
+    margin-bottom: 15px; /* Más espacio entre los elementos */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: rgba(139, 69, 19, 0.3); /* Café oscuro más fuerte */
+    transform: translateY(-2px);
+}
+
+.list-group-item a {
+    color: #d9b89c; /* Café claro */
+    text-decoration: none;
+}
+
+.list-group-item a:hover {
+    color: #ffffff; /* Blanco */
+}
+
+.error {
+    color: #dc3545; /* Rojo */
+}
+
+.no-prestamos {
+    font-size: 1.1rem; /* Aumentamos el tamaño de fuente */
+    padding: 15px;
+    background-color: rgba(165, 42, 42, 0.3); /* Rojo translúcido */
+    border: 1px solid rgba(165, 42, 42, 0.7); /* Rojo oscuro */
+    border-radius: 5px;
+    color: #ffffff; /* Blanco */
+    text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /* Ajustes en pantallas pequeñas */
+    .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        padding: 15px; /* Menos padding en el sidebar para no ocupar tanto espacio */
+    }
+
+    .container {
+        width: 100%; /* El contenedor ocupa el 100% del ancho */
+        padding: 25px; /* Menos padding para pantallas más pequeñas */
+        margin-top: 20px; /* Margen superior para separación */
+    }
+}
+
+/* Para el login */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #3e2723; /* Fondo burdeos */
+    color: #ffffff;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 320px; /* Aumentamos un poco el máximo ancho */
+    padding: 30px; /* Aumentamos el padding para mayor comodidad */
+    background: #5d4037; /* Fondo marrón oscuro */
+    border-radius: 9px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos estén en columna */
+    align-items: center; /* Centra los elementos dentro del contenedor */
+    box-sizing: border-box; /* Asegura que el padding no afecte al tamaño total */
+    margin: 10px; /* Añadimos un pequeño margen en móviles para evitar que toque los bordes */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px; /* Más espacio debajo del título */
+}
+
+.form-group {
+    margin-bottom: 20px;
+    max-width: 210px; /* Aumentamos el espacio entre los campos */
+}
+
+label {
+    display: block;
+    margin-bottom: 8px; /* Más espacio entre la etiqueta y el input */
+}
+
+input {
+    width: 100%;
+    padding: 12px; /* Mayor padding para los inputs */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px; /* Mayor padding para el botón */
+    background: #795548; /* Marrón más claro */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #8d6e63;
+}
+
+.messages {
+    margin-top: 15px; /* Más espacio entre los mensajes */
+}
+
+.message {
+    color: #ffccbc; /* Alerta marrón claro */
+    text-align: center;
+}
+
+
+.btn-search {
+    padding: 10px 20px;
+    background-color: #7f4a42; /* Rojo burdeos oscuro */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-search:hover {
+    background-color: #9e5c4f; /* Rojo más claro */
+    transform: translateY(-2px);
+}
+
+/* Botones de acción (Editar y Eliminar) */
+.btn-edit, .btn-delete, .btn-back {
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.btn-edit {
+    background-color: #9c6a4f; /* Rojo cálido */
+}
+
+.btn-edit:hover {
+    background-color: #b77f61; /* Rojo más cálido */
+    transform: translateY(-2px);
+}
+
+.btn-delete {
+    background-color: #c0392b; /* Rojo intenso */
+}
+
+.btn-delete:hover {
+    background-color: #e74c3c; /* Rojo más brillante */
+    transform: translateY(-2px);
+}
+
+.btn-back {
+    margin-top: 30px;
+    background-color: #4e2a2a; /* Burdeos oscuro */
+}
+
+.btn-back:hover {
+    background-color: #6f3b3b; /* Burdeos más suave */
+    transform: translateY(-2px);
+}
+
+/* Estilos adicionales */
+.container .table {
+    background-color: rgb(84, 32, 12); /* Fondo translúcido para las tablas */
+    border-radius: 8px;
+}
+
+.table th, .table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #000000;
+}
+
+.table th {
+    background-color: #333;
+    color: #000000;
+}
+
+.table tr:hover {
+    background-color: #444;
+}
+
+
+/* Barra de búsqueda */
+.input-group {
+    margin-bottom: 30px; /* Añadimos un poco de margen debajo de la barra de búsqueda */
+}
+
+.form-control {
+    padding: 10px 15px;
+    background-color: #5c3d3d; /* Tono burdeos oscuro para la barra de búsqueda */
+    color: #fff; /* Texto blanco */
+    border: 1px solid #4a2a2a; /* Borde más oscuro para que combine */
+    border-radius: 5px; /* Bordes redondeados */
+    transition: background-color 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: #f0e6dc; /* Color suave para el texto del placeholder */
+}
+
+.form-control:focus {
+    background-color: #7f4a42; /* Tono más claro de burdeos al enfocarse */
+    border-color: #9e5c4f; /* Borde más claro */
+    box-shadow: 0 0 5px rgba(153, 103, 51, 0.5); /* Efecto sutil en el borde */
+}
+
+/* Botón de búsqueda */
+.btn-search {
+    padding: 10px 20px;
+    margin-top: 15px;
+    background-color: #9e5c4f; /* Rojo más cálido que hace contraste con la barra de búsqueda */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-search:hover {
+    background-color: #b77f61; /* Rojo más cálido */
+    transform: translateY(-2px);
+}
+
+
+/* Botones personalizados */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn-danger {
+    background-color: #e74c3c; /* Rojo intenso */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.btn-danger:hover {
+    background-color: #c0392b; /* Rojo más oscuro */
+}
+
+.btn-secondary {
+    background-color: #7f8c8d; /* Gris */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    text-decoration: none; /* Elimina subrayado */
+}
+
+.btn-secondary:hover {
+    background-color: #5d6d72; /* Gris más oscuro */
+}
+
+
+
+.form-add-user {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.form-add-user .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-add-user label {
+    font-weight: bold;
+}
+
+.form-add-user input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn-submit {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+    background-color: #1e8449;
+}
+
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.btn {
+    text-decoration: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    color: #fff;
+    background-color: #a55107d9;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 220px;
+}
+
+.btn:hover {
+    background-color: #8a2d0e;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #bd2130;
+}
+
+
+
+
+/* Centrado del contenedor */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3e2723; /* Fondo café oscuro */
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor del formulario */
+.form-container {
+    background: #212121; /* Fondo negro */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px; /* Ajuste de ancho */
+    box-sizing: border-box;
+    color: #e0e0e0; /* Texto claro */
+}
+
+/* Título del formulario */
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #f5b041; /* Naranja tenue */
+    font-size: 24px;
+}
+
+/* Campos del formulario */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #bdbdbd; /* Gris claro */
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #5d4037; /* Borde café oscuro */
+    border-radius: 5px;
+    background: #4e342e; /* Fondo café claro */
+    color: #ffffff; /* Texto blanco */
+    box-sizing: border-box;
+}
+
+/* Botones */
+button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:first-child {
+    background-color: #f57c00; /* Naranja */
+    color: white;
+}
+
+button:first-child:hover {
+    background-color: #ef6c00; /* Naranja oscuro */
+}
+
+button:last-child {
+    background-color: #795548; /* Marrón oscuro */
+    color: white;
+}
+
+button:last-child:hover {
+    background-color: #6d4c41; /* Marrón más oscuro */
+}
+
+/* Espaciado entre botones */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}

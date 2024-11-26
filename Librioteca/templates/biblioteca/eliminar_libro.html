@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Libro | Librioteca</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/assets/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Librioteca</h2>
+        <nav>
+            <a href="{% url 'inicio' %}" class="sidebar-link">Inicio</a>
+            <a href="{% url 'lista_libros' %}" class="sidebar-link">Lista de Libros</a>
+            <a href="{% url 'agregar_libro' %}" class="sidebar-link">Agregar Libro</a>
+            <a href="{% url 'registrar_prestamo' %}" class="sidebar-link">Registrar Préstamo</a>
+            <a href="{% url 'lista_usuarios' %}" class="sidebar-link">Lista de Usuarios</a>
+            <a href="{% url 'agregar_usuario' %}" class="sidebar-link">Agregar Usuario</a>
+        </nav>
+    </div>
+
+    <div class="container mt-5">
+        <header class="text-center">
+            <h1 class="text-danger">Eliminar Libro</h1>
+            <p>¿Estás seguro de que deseas eliminar el libro <strong>"{{ libro.titulo }}"</strong>?</p>
+        </header>
+        <main class="d-flex justify-content-center">
+            <form method="POST" class="form-delete-book text-center">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                    <a href="{% url 'lista_libros' %}" class="btn btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>

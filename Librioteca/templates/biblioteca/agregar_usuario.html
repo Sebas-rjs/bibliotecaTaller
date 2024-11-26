@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Usuario</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Librioteca</h2>
+        <nav>
+            <a href="{% url 'inicio' %}" class="sidebar-link">Inicio</a>
+            <a href="{% url 'lista_libros' %}" class="sidebar-link">Lista de Libros</a>
+            <a href="{% url 'agregar_libro' %}" class="sidebar-link">Agregar Libro</a>
+            <a href="{% url 'registrar_prestamo' %}" class="sidebar-link">Registrar Préstamo</a>
+            <a href="{% url 'lista_usuarios' %}" class="sidebar-link">Lista de Usuarios</a>
+            <a href="{% url 'agregar_usuario' %}" class="sidebar-link active">Agregar Usuario</a>
+        </nav>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Agregar Usuario</h1>
+        </header>
+        <main>
+            <form method="POST" class="form-add-user">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="rut">RUT</label>
+                    <input type="text" id="rut" name="rut" placeholder="Ingrese el RUT (sin puntos y con guión)" required>
+
+                    <label for="correo">Correo</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ingrese el correo electrónico" required>
+
+                    <label for="telefono">Teléfono</label>
+                    <input type="text" id="telefono" name="telefono" placeholder="Ingrese el número de teléfono" required>
+
+                    <label for="direccion">Dirección</label>
+                    <input type="text" id="direccion" name="direccion" placeholder="Ingrese la dirección" required>
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn-submit">Agregar</button>
+                    <a href="{% url 'lista_usuarios' %}" class="btn-secondary">Cancelar</a>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
